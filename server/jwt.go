@@ -46,8 +46,6 @@ func SignJWT_RS256(kid string, priv *rsa.PrivateKey, sub string, iat, exp time.T
 	return signingInput + "." + enc.EncodeToString(sig), nil
 }
 
-// ParseJWTParts pulls the header+claims JSON and the kid from a JWT without verifying it.
-// Useful for tests and debugging.
 func ParseJWTParts(token string) (headerJSON, claimsJSON []byte, kid string, err error) {
 	parts := strings.Split(token, ".")
 	if len(parts) != 3 {
